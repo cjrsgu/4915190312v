@@ -1,14 +1,14 @@
-const btn = document.getElementById("send_btn");
-const commentsCont = document.getElementsByClassName("comments")[0];
-const textArea = document.getElementsByClassName("send-form__text")[0];
+var btn = document.getElementById("send_btn");
+var commentsCont = document.getElementsByClassName("comments")[0];
+var textArea = document.getElementsByClassName("send-form__text")[0];
 
-const userName = "Default User Name";
+var userName = "Default User Name";
 
-btn.addEventListener("click", () => {
+btn.addEventListener("click", function() {
   appendComment(userName);
 });
 
-window.addEventListener("keydown", e => {
+window.addEventListener("keydown", function(e) {
   if (e.key === "Enter" && e.ctrlKey) {
     appendComment(userName);
   }
@@ -20,11 +20,11 @@ function appendComment(userName) {
 }
 
 function createComment(author, text) {
-  const comment = document.createElement("div");
-  const commentCaption = document.createElement("div");
-  const commentName = document.createElement("div");
-  const commentDate = document.createElement("div");
-  const commentText = document.createElement("div");
+  var comment = document.createElement("div");
+  var commentCaption = document.createElement("div");
+  var commentName = document.createElement("div");
+  var commentDate = document.createElement("div");
+  var commentText = document.createElement("div");
 
   comment.className = "comment";
   commentCaption.className = "comment__caption";
@@ -32,7 +32,7 @@ function createComment(author, text) {
   commentDate.className = "caption__date";
   commentText.className = "comment__text";
 
-  const months = [
+  var months = [
     "Января",
     "Февраля",
     "Марта",
@@ -46,11 +46,14 @@ function createComment(author, text) {
     "Ноября",
     "Декабря"
   ];
-  const date = new Date();
+  var date = new Date();
 
-  commentDate.innerText = `${date.getDate()} ${months[
-    date.getMonth()
-  ].toLowerCase()} ${date.getFullYear()}`;
+  commentDate.innerText =
+    date.getDate() +
+    " " +
+    months[date.getMonth()].toLowerCase() +
+    " " +
+    date.getFullYear();
   commentName.innerText = author;
   commentText.innerText = text;
 
